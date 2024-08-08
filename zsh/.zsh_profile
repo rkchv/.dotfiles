@@ -1,6 +1,4 @@
-VIM="nvim"
-export GIT_EDITOR=$VIM
-
-addToPathFront $HOME/.local/scripts
+export GIT_EDITOR="nvim"
+export PATH="$HOME/.local/scripts:$PATH"
 
 bindkey -s ^f "tmux-sessionizer\n"

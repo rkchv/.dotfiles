@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+# General settings
+yabai -m config external_bar all:20:0
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse autoraise
+yabai -m config focus_follows_mouse on
+yabai -m config window_placement second_child
+yabai -m config window_topmost on
+
+# Window settings
+yabai -m config window_shadow off
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 0.9
+yabai -m config normal_window_opacity 0.8
+yabai -m config split_ratio 0.5
+
+# Layout settings
+yabai -m config layout bsp
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
+
+# Monitor settings
+yabai -m config auto_balance on
+yabai -m config mouse_modifier fn+shift
+
+# Floating windows rules
+yabai -m rule --add app="System Preferences" manage=off
+yabai -m rule --add app="Preview" manage=off
+yabai -m rule --add app="Safari" manage=off
+
+# Keybindings
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+# Focus window
+yabai -m config focus on
+
+# Bindings for focusing windows
+yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_follows_focus off
+
+# Space management
+yabai -m config window_border on
+yabai -m config window_border_width 2
+yabai -m config active_window_border_color 0xff775759
+yabai -m config normal_window_border_color 0xff555555
+
+# Shortcut keybindings
+yabai -m signal --add event=dock_did_restart action="brew services restart yabai"
+
+# Switch focus between windows
+yabai -m config focus_follows_mouse on
+
+# Move focus with arrow keys
+yabai -m config modifier ctrl
+yabai -m bind "ctrl - h" window --focus west
+yabai -m bind "ctrl - j" window --focus south
+yabai -m bind "ctrl - k" window --focus north
+yabai -m bind "ctrl - l" window --focus east
+
+# Move windows with shift + arrow keys
+yabai -m bind "ctrl - shift - h" window --swap west
+yabai -m bind "ctrl - shift - j" window --swap south
+yabai -m bind "ctrl - shift - k" window --swap north
+yabai -m bind "ctrl - shift - l" window --swap east
+
+# Resize windows with ctrl + alt + arrow keys
+yabai -m bind "ctrl - alt - h" window --resize left:-20:0
+yabai -m bind "ctrl - alt - j" window --resize bottom:0:20
+yabai -m bind "ctrl - alt - k" window --resize top:0:20
+yabai -m bind "ctrl - alt - l" window --resize right:20:0
+
+# Restart Yabai
+yabai -m bind "cmd - alt - r" yabai --restart
+
+# Focus next/previous window
+yabai -m bind "ctrl - alt - n" window --focus next
+yabai -m bind "ctrl - alt - p" window --focus prev
+
+# Fullscreen toggle
+yabai -m bind "ctrl - alt - f" window --toggle zoom-fullscreen
+
+# Floating toggle
+yabai -m bind "ctrl - alt - t" window --toggle float
+
+# Set split ratio
+yabai -m bind "ctrl - alt - equal" window --ratio inc 0.05
+yabai -m bind "ctrl - alt - minus" window --ratio dec 0.05
+
+# Restart the window manager
+yabai -m bind "ctrl - alt - q" yabai --restart
+
+# Exit the window manager
+yabai -m bind "ctrl - alt - e" yabai --stop
+
+# Reload the config file
+yabai -m bind "ctrl - alt - r" yabai --restart

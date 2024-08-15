@@ -25,8 +25,6 @@ Keymap("n", "vv", "^vg_")
 
 -- Select entire buffer
 Keymap("n", "vaa", "ggvGg_")
-Keymap("n", "Vaa", "ggVG")
-Keymap("n", "<leader>V", "V`]")
 
 -- Save all files.
 Keymap("n", "<F2>", "<cmd>wall<cr>")
@@ -77,7 +75,6 @@ Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 
 -- Quit all and Save All
 Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
-Keymap("n", "<c-s>", "<cmd>wall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ leader + space
@@ -107,19 +104,6 @@ Keymap("n", "<leader>bx", [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]])
 -- {{{ c - Copy & Paste
 
 Keymap("n", "<leader>yb", 'ggVGg_"+y')
-
--- ------------------------------------------------------------------------- }}}
--- {{{ g - KJV commands
-
--- vim.api.nvim_set_keymap('x', 'gk',
---   [[:lua require("traap.core.functions.KJV").insert_verse_from_visual_selection()<cr>]],
---   { noremap = true, silent = true, desc = "Insert verse from visual selection" }
--- )
-
--- vim.api.nvim_set_keymap('n', 'gk',
---   [[:lua require("traap.core.functions.KJV").insert_verse_from_line()<cr>]],
---   { noremap = true, silent = true, desc = "Insert verse from line" }
--- )
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ o - Options
@@ -154,10 +138,6 @@ Keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
 
 -- Remove line end trailing white space.
 Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
-
--- TODO: keymap below depends upon a https://github.com/willothy/wezterm.nvim
--- Move this to wezterm.configuation
--- vim.keymap.set("n", "<leader>tt", require('wezterm').switch_tab.index)
 
 -- Delete empty lines.
 vim.api.nvim_set_keymap(

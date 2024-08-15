@@ -4,7 +4,7 @@ return {
   build = ":TSUpdate",
   config = function ()
     require('nvim-treesitter.configs').setup {
-      -- Add languages to be installed here that you want installed for treesitter
+
       ensure_installed = {
         "bash", "c", "cpp", "dockerfile", "go", "html", "javascript",
         "json", "lua", "markdown", "markdown_inline", "query", "regex",
@@ -20,8 +20,8 @@ return {
         keymaps = {
           init_selection = '<c-space>',
           node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
           node_decremental = '<M-space>',
+          scope_incremental = '<c-s>',
         },
       },
 
@@ -29,7 +29,6 @@ return {
         select = {
           enable = true,
           lookahead = true,
-
           keymaps = {
             ['aa'] = '@parameter.outer',
             ['ia'] = '@parameter.inner',
@@ -60,6 +59,7 @@ return {
             ['[]'] = '@class.outer',
           },
         },
+
         swap = {
           enable = true,
           swap_next = {

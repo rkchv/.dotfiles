@@ -1,5 +1,5 @@
 vim.opt.guicursor = "n-v-c:block"
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.numberwidth = 3
@@ -52,7 +52,7 @@ vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undo/"
 
 vim.opt.timeout = true
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 200
 vim.opt.ttimeout = true
 vim.opt.ttimeoutlen = 5
 vim.opt.updatetime = 50

@@ -32,22 +32,14 @@ return {
     end
 
     return {
-      -- Harpoon marked files 1 through 4
       {"<leader>h1", function() harpoon:list():select(1) end, desc ="Harpoon buffer 1"},
       {"<leader>h2", function() harpoon:list():select(2) end, desc ="Harpoon buffer 2"},
       {"<leader>h3", function() harpoon:list():select(3) end, desc ="Harpoon buffer 3"},
       {"<leader>h4", function() harpoon:list():select(4) end, desc ="Harpoon buffer 4"},
-
-      -- Harpoon next and previous.
       {"<leader>hn", function() harpoon:list():next() end, desc ="Harpoon next buffer"},
       {"<leader>hp", function() harpoon:list():prev() end, desc ="Harpoon prev buffer"},
-
-      -- Harpoon user interface.
       {"<leader>hu", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc ="Harpoon Toggle Menu"},
-
       {"<leader>ha", function() harpoon:list():add() end, desc ="Harpoon add file"},
-
-      -- Use Telescope as Harpoon user interface.
       {"<leader>ht", function() toggle_telescope(harpoon:list() )end, desc ="Open Harpoon window"},
     }
   end,

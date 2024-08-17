@@ -2,3 +2,4 @@ export GIT_EDITOR="nvim"
 export PATH="$HOME/.local/scripts:$PATH"
 
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^h "tmux-cht\n"

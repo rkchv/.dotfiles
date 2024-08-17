@@ -1,148 +1,113 @@
--- {{{ Global definitions
-
-Keymap = require("rkchv.core.functions.keymap").keymap
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Disable LazyVim keybindsings
-
--- Delete the current line.
-Keymap("n", "<A-j>", "")
-Keymap("i", "<A-j>", "")
-Keymap("v", "<A-j>", "")
-
-Keymap("n", "<A-k>", "")
-Keymap("i", "<A-k>", "")
-Keymap("v", "<A-k>", "")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ General mappings.
-
--- Delete the current line.
-Keymap("n", "-", "dd")
-
--- Select (charwise) the contents of the current line, excluding indentation.
-Keymap("n", "vv", "^vg_")
-
 -- Select entire buffer
-Keymap("n", "vaa", "ggvGg_")
+vim.keymap.set("n", "vaa", "ggvGg_")
 
 -- Save all files.
-Keymap("n", "<F2>", "<cmd>wall<cr>")
+vim.keymap.set("n", "<F2>", "<cmd>wall<cr>")
 
 -- Toggle [in]visible characters.
-Keymap("n", "<leader>i", "<cmd>set list!<cr>")
+vim.keymap.set("n", "<leader>i", "<cmd>set list!<cr>")
 
 -- Stay in indent mode.
-Keymap("v", "<", "<gv")
-Keymap("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 -- Visual yank
-Keymap("v", "<leader>cc", '"+y')
+vim.keymap.set("v", "<leader>cc", '"+y')
 
 -- Obfuscate
-Keymap("n", "<f3>", "mmggg?G`m")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Folding commands.
-
--- Author: Karl Yngve Lervåg
---    See: https://github.com/lervag/dotnvim
+vim.keymap.set("n", "<f3>", "mmggg?G`m")
 
 -- Close all fold except the current one.
-Keymap("n", "zv", "zMzvzz")
+vim.keymap.set("n", "zv", "zMzvzz")
 
 -- Close current fold when open. Always open next fold.
-Keymap("n", "zj", "zcjzOzz")
+vim.keymap.set("n", "zj", "zcjzOzz")
 
 -- Close current fold when open. Always open previous fold.
-Keymap("n", "zk", "zckzOzz")
+vim.keymap.set("n", "zk", "zckzOzz")
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Keep the cursor in place while joining lines.
+-- zo (open fold)
+-- zc (close fold)
+-- za (toggle fold)
+-- zR (open all folds)
+-- zM (close all folds)
 
-Keymap("n", "J", "mzJ`z")
-Keymap("n", "<leader>J", "myvipJ`ygq<cr>")
+-- Quit
+vim.keymap.set("n", "<leader>qq", "<cmd>qall!<cr>")
+vim.keymap.set("n", "<leader>tt", ":tabc<CR>")
+vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>")
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>")
+vim.keymap.set("n", "<leader>oo", "<cmd>only<cr>")
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Shell commands.
+-- Help
+vim.keymap.set("n", "<leader>hh", "<cmd>silent vert bo help<cr>")
 
--- Execute the current line of text as a shell command.
-Keymap("n", "<localleader>E", [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
-Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
+-- Linewise reselection of what you just pasted.
+vim.keymap.set("n", "<leader>VV", "V`]")
 
--- ------------------------------------------------------------------------- }}}
--- {{{ Q/q - Quit
-
--- Quit all and Save All
-Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ leader + space
-
-Keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ H - Help
-
-Keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ V - Linewise reselection of what you just pasted.
-
-Keymap("n", "<leader>VV", "V`]")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ b - Buffer adjustments.
-
-Keymap("n", "<leader>bh", "<cmd>vertical resize -1<cr>")
-Keymap("n", "<leader>bj", "<cmd>resize +1<cr>")
-Keymap("n", "<leader>bk", "<cmd>resize -1<cr>")
-Keymap("n", "<leader>bl", "<cmd>vertical resize +1<cr>")
-Keymap("n", "<leader>bx", [[<cmd>luafile %<cr><cmd>echo "Sourced " . @%<cr>]])
-
--- ------------------------------------------------------------------------- }}}
--- {{{ c - Copy & Paste
-
-Keymap("n", "<leader>yb", 'ggVGg_"+y')
-
--- ------------------------------------------------------------------------- }}}
--- {{{ o - Options
-
-Keymap("n", "<leader>oh", "<cmd>checkhealth<cr>")
-Keymap("n", "<leader>oo", "<cmd>only<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ p - Package manager
-
-Keymap("n", "<leader>ph", "<cmd>Lazy home<cr>")
-Keymap("n", "<leader>pl", "<cmd>Lazy log<cr>")
-Keymap("n", "<leader>pp", "<cmd>Lazy profile<cr>")
-Keymap("n", "<leader>ps", "<cmd>Lazy sync<cr>")
-Keymap("n", "<leader>pu", "<cmd>Lazy update<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ s - Split & Sorts
-
-Keymap("n", "<leader>sh", "<cmd>split<cr>")
-Keymap("n", "<leader>sv", "<cmd>vsplit<cr>")
-Keymap("n", "<leader>ss", "0v)k$:sort<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ w - Whitespace
+-- Copy all buffer to system clipboard
+vim.keymap.set("n", "<leader>yb", 'ggVGg_"+y')
 
 -- Remove Windoz line ending.
-Keymap("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]])
+vim.keymap.set("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]])
 
 -- Convert tab to 2 spaces.
-Keymap("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
+vim.keymap.set("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
 
 -- Remove line end trailing white space.
-Keymap("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
+vim.keymap.set("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
 
 -- Delete empty lines.
-vim.api.nvim_set_keymap(
-  "n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>",
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>", { noremap = true, silent = true })
 
--- ------------------------------------------------------------------------- }}}
+-- Delete the current line.
+vim.keymap.set("n", "-", "dd")
+
+-- Select (charwise) the contents of the current line, excluding indentation.
+vim.keymap.set("n", "vv", "^vg_")
+
+-- Open Ntree
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Move line up/down
+vim.keymap.set('n', 'K', ':m .-2<CR>==')
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+vim.keymap.set('n', 'J', ':m .+1<CR>==')
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+
+-- Lines joining
+vim.keymap.set("n", "J", "mzJ`z")
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Keys disabling
+vim.keymap.set("n", "Q", "<nop>")
+
+-- New Tmux session
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Formatting using LSP
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+-- Navigate throught quickfix list
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+
+-- Find and replace
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Make a current file exexutable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Reload neovim config
+vim.keymap.set("n", "<leader><leader>", function()
+  vim.cmd("so")
+end)
+
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "n", "nzzzv")
+-- vim.keymap.set("n", "N", "Nzzzv")
+-- vim.keymap.set("x", "<leader>p", [["_dP]])

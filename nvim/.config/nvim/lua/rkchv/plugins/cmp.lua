@@ -96,8 +96,6 @@ return {
     local mapping = {
       ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
       ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-c>"] = cmp.mapping { i = cmp.mapping.abort(), c = cmp.mapping.close() },
       ["<CR>"] = cmp.mapping.confirm { select = true },
 
@@ -151,7 +149,6 @@ return {
     local sources = {
       { name = "calc", keyword_length = 3, max_item_count = 10, priority = 250 },
       { name = "path", keyword_length = 3, max_item_count = 20, prioirty = 250 },
-      { name = "spell", keyword_length = 4, max_item_count = 10, priority = 450 },
       { name = "buffer", keyword_length = 3, max_item_count = 10, prioirty = 500 },
       { name = "luasnip", keyword_length = 1, max_item_count = 10, prioirty = 825},
       { name = "nvim_lsp", keyword_length = 1, max_item_count = 10, priority = 900},

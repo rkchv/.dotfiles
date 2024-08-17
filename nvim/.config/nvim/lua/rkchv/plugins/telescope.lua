@@ -11,26 +11,6 @@ return {
     }
   },
 
-  -- {{{ keymaps
-
-  keys = function()
-    local cmdT = "<cmd>Telescope "
-    local cmdL = "<cmd>lua require('telescope')."
-    return {
-      {"<leader>ff", cmdT .. "git_files<cr>", desc = "Telescope Find files" },
-      {"<leader>fc", cmdT .. "git_commits<cr>", desc = "Telescope git commits" },
-      {"<leader>fb", cmdT .. "git_branches<cr>", desc = "Telescope git branches" },
-      {"<leader>fs", cmdT .. "git_status<cr>", desc = "Telescope git status" },
-      {"<leader>tf", cmdT .. "find_files<cr>", desc = "Telescope All files" },
-      {"<leader>tg", cmdT .. "live_grep<cr>", desc = "Telescope Live Grep" },
-      {"<leader>tb", cmdT .. "buffers<cr>", desc = "Telescope buffers" },
-      {"<leader>tc", cmdT .. "commands<cr>", desc = "Telescope commands" },
-      {"<leader>tr", cmdT .. "registers<cr>", desc = "Telescope registers" },
-      {"<leader>tk", cmdT .. "keymaps<cr>", desc = "Telescope keymaps" },
-    }
-  end,
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ opts
 
   opts = function(_, opts)
@@ -66,8 +46,18 @@ return {
 
   config = function(_, opts)
     local telescope = require("telescope")
+    local builtin = require('telescope.builtin')
+
     telescope.setup(opts)
     telescope.load_extension('fzf')
+
+    vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+    vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+    vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+    vim.keymap.set('n', '<leader>pg', function()
+      builtin.grep_string({ search = vim.fn.input("Grep > ") })
+    end)
+
   end,
 }
 

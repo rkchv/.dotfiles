@@ -17,7 +17,4 @@ require("rkchv.config.remap")
 -- theprimeagen/refactoring.nvim
 -- mbbill/undotree
 -- nvim-treesitter/nvim-treesitter-context
--- VonHeikemen/lsp-zero.nvim
--- folke/zen-mode.nvim
--- github/copilot.vim
 -- laytan/cloak.nvim

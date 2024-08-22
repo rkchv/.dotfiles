@@ -4,13 +4,13 @@ return {
   enabled = true,
   dependencies = {
     "L3MON4D3/LuaSnip",
+    "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-calc",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp",
-    "friendly-snippets"
+    "friendly-snippets",
   },
 
   opts = function(_, opts)
@@ -24,6 +24,7 @@ return {
       select = true,
     }
     -- --------------------------------------------------------------------- }}}
+
     -- {{{ Add boarders to completion windows.
 
     local window = {

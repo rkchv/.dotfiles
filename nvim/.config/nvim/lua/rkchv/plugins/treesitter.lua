@@ -10,7 +10,7 @@ return {
     require('nvim-treesitter.configs').setup {
 
       ensure_installed = {
-        "bash", "c", "cpp", "dockerfile", "go", "html", "javascript",
+        "proto", "bash", "c", "cpp", "dockerfile", "go", "html", "javascript",
         "json", "lua", "markdown", "markdown_inline", "query", "regex",
         "sql", "toml", "vim", "vimdoc", "yaml",
       },
@@ -24,7 +24,7 @@ return {
         keymaps = {
           init_selection = '<c-space>',
           node_incremental = '<c-space>',
-          node_decremental = '<M-space>',
+          node_decremental = '<c-backspace>',
           scope_incremental = '<c-s>',
         },
       },
@@ -40,6 +40,11 @@ return {
             ['if'] = '@function.inner',
             ['ac'] = '@class.outer',
             ['ic'] = '@class.inner',
+            ['ii'] = '@conditional.inner',
+            ['ai'] = '@conditional.outer',
+            ['il'] = '@loop.inner',
+            ['al'] = '@loop.outer',
+            ['at'] = '@comment.outer',
           },
         },
 
@@ -47,19 +52,19 @@ return {
           enable = true,
           set_jumps = true, -- whether to set jumps in the jumplist
           goto_next_start = {
-            [']m'] = '@function.outer',
+            [']f'] = '@function.outer',
             [']]'] = '@class.outer',
           },
           goto_next_end = {
-            [']M'] = '@function.outer',
+            [']F'] = '@function.outer',
             [']['] = '@class.outer',
           },
           goto_previous_start = {
-            ['[m'] = '@function.outer',
+            ['[f'] = '@function.outer',
             ['[['] = '@class.outer',
           },
           goto_previous_end = {
-            ['[M'] = '@function.outer',
+            ['[F'] = '@function.outer',
             ['[]'] = '@class.outer',
           },
         },

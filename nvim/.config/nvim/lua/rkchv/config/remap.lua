@@ -1,3 +1,5 @@
+vim.keymap.set("n", "LL", ":e #<CR>", { noremap = true, silent = true })
+
 -- Select entire buffer
 vim.keymap.set("n", "vaa", "ggvGg_")
 
@@ -10,9 +12,6 @@ vim.keymap.set("n", "<leader>i", "<cmd>set list!<cr>")
 -- Stay in indent mode.
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-
--- Visual yank
-vim.keymap.set("v", "<leader>cc", '"+y')
 
 -- Obfuscate
 vim.keymap.set("n", "<f3>", "mmggg?G`m")
@@ -36,18 +35,15 @@ vim.keymap.set("n", "zk", "zckzOzz")
 vim.keymap.set("n", "<leader>qq", "<cmd>qall!<cr>")
 vim.keymap.set("n", "<leader>tt", ":tabc<CR>")
 vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
-vim.keymap.set("n", "<leader>tn", ":tabn<CR>")
-vim.keymap.set("n", "<leader>tp", ":tabp<CR>")
-vim.keymap.set("n", "<leader>oo", "<cmd>only<cr>")
+vim.keymap.set("n", "<leader>tl", ":tabn<CR>")
+vim.keymap.set("n", "<leader>th", ":tabp<CR>")
+vim.keymap.set("n", "<leader>wr", "<cmd>only<cr>")
 
 -- Help
 vim.keymap.set("n", "<leader>hh", "<cmd>silent vert bo help<cr>")
 
 -- Linewise reselection of what you just pasted.
 vim.keymap.set("n", "<leader>VV", "V`]")
-
--- Copy all buffer to system clipboard
-vim.keymap.set("n", "<leader>yb", 'ggVGg_"+y')
 
 -- Remove Windoz line ending.
 vim.keymap.set("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]])
@@ -61,14 +57,11 @@ vim.keymap.set("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>
 -- Delete empty lines.
 vim.api.nvim_set_keymap("n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>", { noremap = true, silent = true })
 
--- Delete the current line.
-vim.keymap.set("n", "-", "dd")
-
 -- Select (charwise) the contents of the current line, excluding indentation.
 vim.keymap.set("n", "vv", "^vg_")
 
 -- Open Ntree
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>ff", vim.cmd.Ex)
 
 -- Move line up/down
 vim.keymap.set('n', 'K', ':m .-2<CR>==')
@@ -92,7 +85,7 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- Find and replace
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set({"n", "v"}, "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Make a current file exexutable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -106,6 +99,8 @@ end)
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- vim.keymap.set("n", "n", "nzzzv")
 -- vim.keymap.set("n", "N", "Nzzzv")
--- vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"v"}, "<leader>p", [["_dP]])
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")

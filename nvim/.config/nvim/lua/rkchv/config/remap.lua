@@ -32,7 +32,7 @@ vim.keymap.set("n", "zk", "zckzOzz")
 -- zM (close all folds)
 
 -- Quit
-vim.keymap.set("n", "<leader>qq", "<cmd>qall!<cr>")
+vim.keymap.set("n", "qq", "<cmd>qall!<cr>")
 vim.keymap.set("n", "<leader>tt", ":tabc<CR>")
 vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
 vim.keymap.set("n", "<leader>tl", ":tabn<CR>")

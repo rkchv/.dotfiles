@@ -2,7 +2,6 @@ return {
   {
     'neovim/nvim-lspconfig',
     enabled = true,
-    lazy = false,
     config = function()
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -34,8 +33,6 @@ return {
           },
         },
       })
-
     end,
-
   },
 }

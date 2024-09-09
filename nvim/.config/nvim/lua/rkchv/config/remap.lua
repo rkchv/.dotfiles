@@ -9,10 +9,6 @@ vim.keymap.set("n", "<F2>", "<cmd>wall<cr>")
 -- Toggle [in]visible characters.
 vim.keymap.set("n", "<leader>i", "<cmd>set list!<cr>")
 
--- Stay in indent mode.
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
-
 -- Obfuscate
 vim.keymap.set("n", "<f3>", "mmggg?G`m")
 
@@ -25,12 +21,6 @@ vim.keymap.set("n", "zj", "zcjzOzz")
 -- Close current fold when open. Always open previous fold.
 vim.keymap.set("n", "zk", "zckzOzz")
 
--- zo (open fold)
--- zc (close fold)
--- za (toggle fold)
--- zR (open all folds)
--- zM (close all folds)
-
 -- Quit
 vim.keymap.set("n", "qq", "<cmd>qall!<cr>")
 vim.keymap.set("n", "<leader>tt", ":tabc<CR>")
@@ -41,21 +31,6 @@ vim.keymap.set("n", "<leader>wr", "<cmd>only<cr>")
 
 -- Help
 vim.keymap.set("n", "<leader>hh", "<cmd>silent vert bo help<cr>")
-
--- Linewise reselection of what you just pasted.
-vim.keymap.set("n", "<leader>VV", "V`]")
-
--- Remove Windoz line ending.
-vim.keymap.set("n", "<leader>wr", [[mz<cmd>%s/\r//g<cr><cmd>let @/=''<cr>`z]])
-
--- Convert tab to 2 spaces.
-vim.keymap.set("n", "<leader>wt", [[mz<cmd>%s/\t/  /g<cr><cmd>let @/=''<cr>`z]])
-
--- Remove line end trailing white space.
-vim.keymap.set("n", "<leader>ww", [[mz<cmd>%s//\\s\\+$////<cr><cmd>let @/=''<cr>`z]])
-
--- Delete empty lines.
-vim.api.nvim_set_keymap("n", "<leader>wl", "<cmd>g/^\\s*$/d<CR>", { noremap = true, silent = true })
 
 -- Select (charwise) the contents of the current line, excluding indentation.
 vim.keymap.set("n", "vv", "^vg_")
@@ -95,12 +70,12 @@ vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"v"}, "<leader>p", [["_dP]])
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- vim.keymap.set("n", "n", "nzzzv")
 -- vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-vim.keymap.set({"v"}, "<leader>p", [["_dP]])
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")

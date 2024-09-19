@@ -10,7 +10,7 @@ return {
     require('nvim-treesitter.configs').setup {
 
       ensure_installed = {
-        "proto", "bash", "c", "cpp", "dockerfile", "go", "html", "javascript",
+        "proto", "bash", "c", "cpp", "dockerfile", "go", "gomod", "html", "javascript",
         "json", "lua", "markdown", "markdown_inline", "query", "regex",
         "sql", "toml", "vim", "vimdoc", "yaml",
       },

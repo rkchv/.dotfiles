@@ -1,6 +1,6 @@
 return {
   'Exafunction/codeium.vim',
-  enabled = false,
+  enabled = true,
 
   config = function ()
     vim.keymap.set('i', '<c-p>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })

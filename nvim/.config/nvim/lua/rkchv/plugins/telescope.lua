@@ -17,6 +17,7 @@ return {
   opts = function(_, opts)
     local actions = require("telescope.actions")
     opts.defaults = {
+      file_ignore_patterns = {".git/", "vendor"},
       layout_config = {
         prompt_position = "top",
         height = 0.7,
@@ -34,6 +35,8 @@ return {
     }
     opts.pickers = {
       colorscheme = { enable_preview = true },
+      find_files = { hidden = true },
+      git_files = { hidden = true },
     }
     opts.extensions = {
       file_browser = {

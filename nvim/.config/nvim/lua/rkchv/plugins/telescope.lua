@@ -35,7 +35,7 @@ return {
     }
     opts.pickers = {
       colorscheme = { enable_preview = true },
-      find_files = { hidden = true },
+      find_files = { hidden = true, no_ignore = true },
       git_files = { hidden = true },
     }
     opts.extensions = {

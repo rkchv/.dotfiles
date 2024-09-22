@@ -1,4 +1,8 @@
 return {
+  {
+    "neoclide/coc.nvim", 
+    branch = "release",
+  },
   "tpope/vim-fugitive",
   "tpope/vim-surround",
   {

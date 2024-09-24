@@ -1,78 +1,127 @@
-vim.keymap.set("n", "LL", ":e #<CR>", { noremap = true, silent = true })
+function Map(mode, lhs, rhs, opts)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.keymap.set(mode, lhs, rhs, options)
+end
+
+Map("n", "<C-h>", "<C-w>h")
+Map("n", "<C-j>", "<C-w>j")
+Map("n", "<C-k>", "<C-w>k")
+Map("n", "<C-l>", "<C-w>l")
+
+-- terminal
+Map("t", "<C-h>", "<cmd>wincmd h<CR>")
+Map("t", "<C-j>", "<cmd>wincmd j<CR>")
+Map("t", "<C-k>", "<cmd>wincmd k<CR>")
+Map("t", "<C-l>", "<cmd>wincmd l<CR>")
+
+Map("n", "<C-Up>", ":resize -2<CR>")
+Map("n", "<C-Down>", ":resize +2<CR>")
+Map("n", "<C-Left>", ":vertical resize -2<CR>")
+Map("n", "<C-Right>", ":vertical resize +2<CR>")
+
+-- terminal
+Map("t", "<C-Up>", "<cmd>resize -2<CR>")
+Map("t", "<C-Down>", "<cmd>resize +2<CR>")
+Map("t", "<C-Left>", "<cmd>vertical resize -2<CR>")
+Map("t", "<C-Right>", "<cmd>vertical resize +2<CR>")
+
+Map("v", "J", ":m '>+1<CR>gv=gv")
+Map("v", "K", ":m '<-2<CR>gv=gv")
+
+Map("v", "<", "<gv")
+Map("v", ">", ">gv")
+
+Map("n", "<TAB>", ":bn<CR>")
+Map("n", "<S-TAB>", ":bp<CR>")
+Map("n", "<leader>bd", ":bd<CR>")
+
+-- lsp
+Map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>")
+Map("n", "<leader>gi", ":lua vim.lsp.buf.implementation()<CR>")
+Map("n", "<leader>gr", ":lua vim.lsp.buf.references()<CR>")
+Map('n', '<leader>ga', ":lua vim.lsp.buf.code_action()<CR>")
+Map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+Map("n", "<leader>dd", ":lua vim.lsp.buf.declaration()<CR>")
+Map("n", "<leader>f", ":lua vim.lsp.buf.format()<CR>")
+Map("n", "K", ":lua vim.lsp.buf.hover()<CR>")
+
+-- dianostic
+Map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
+
+Map("n", "<C-d>", "<C-d>zz")
+Map("n", "<C-u>", "<C-u>zz")
+Map("n", "J", "mzJ`z")
+Map("n", "n", "nzzzv")
+Map("n", "N", "Nzzzv")
+
+Map("n", "LL", ":e #<CR>") 
 
 -- Select entire buffer
-vim.keymap.set("n", "vaa", "ggvGg_")
+Map("n", "vfa", "ggvGg_")
 
 -- Save all files.
-vim.keymap.set("n", "<F2>", "<cmd>wall<cr>")
+Map("n", "<F2>", "<cmd>wall<cr>")
 
 -- Toggle [in]visible characters.
-vim.keymap.set("n", "<leader>i", "<cmd>set list!<cr>")
+Map("n", "<leader>i", "<cmd>set list!<cr>")
 
 -- Obfuscate
-vim.keymap.set("n", "<f3>", "mmggg?G`m")
+Map("n", "<f3>", "mmggg?G`m")
 
 -- Close all fold except the current one.
-vim.keymap.set("n", "zv", "zMzvzz")
+Map("n", "zv", "zMzvzz")
 
 -- Close current fold when open. Always open next fold.
-vim.keymap.set("n", "zj", "zcjzOzz")
+Map("n", "zj", "zcjzOzz")
 
 -- Close current fold when open. Always open previous fold.
-vim.keymap.set("n", "zk", "zckzOzz")
+Map("n", "zk", "zckzOzz")
 
 -- Quit
-vim.keymap.set("n", "qq", "<cmd>qall!<cr>")
-vim.keymap.set("n", "<leader>tt", ":tabc<CR>")
-vim.keymap.set("n", "<leader>to", ":tabonly<CR>")
-vim.keymap.set("n", "<leader>tl", ":tabn<CR>")
-vim.keymap.set("n", "<leader>th", ":tabp<CR>")
-vim.keymap.set("n", "<leader>wr", "<cmd>only<cr>")
+Map("n", "qq", "<cmd>qall!<cr>")
+Map("n", "<leader>tt", ":tabc<CR>")
+Map("n", "<leader>to", ":tabonly<CR>")
+Map("n", "<leader>tl", ":tabn<CR>")
+Map("n", "<leader>th", ":tabp<CR>")
+Map("n", "<leader>wr", "<cmd>only<cr>")
 
 -- Help
-vim.keymap.set("n", "<leader>hh", "<cmd>silent vert bo help<cr>")
+Map("n", "<leader>hh", "<cmd>silent vert bo help<cr>")
 
 -- Select (charwise) the contents of the current line, excluding indentation.
-vim.keymap.set("n", "vv", "^vg_")
+Map("n", "vv", "^vg_")
 
 -- Open Ntree
-vim.keymap.set("n", "<leader>ff", vim.cmd.Ex)
+Map("n", "<leader>ff", vim.cmd.Ex)
 
--- Move line up/down
-vim.keymap.set('n', 'K', ':m .-2<CR>==')
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-vim.keymap.set('n', 'J', ':m .+1<CR>==')
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-
--- Lines joining
-vim.keymap.set("n", "J", "mzJ`z")
-
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+Map("n", "<C-d>", "<C-d>zz")
+Map("n", "<C-u>", "<C-u>zz")
 
 -- Keys disabling
-vim.keymap.set("n", "Q", "<nop>")
+Map("n", "Q", "<nop>")
+Map("n", "<F1>", "<nop>")
 
 -- New Tmux session
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
--- Formatting using LSP
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+Map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Find and replace
 vim.keymap.set({"n", "v"}, "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Make a current file exexutable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+Map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Reload neovim config
-vim.keymap.set("n", "<leader><leader>", function()
+Map("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-vim.keymap.set({"v"}, "<leader>p", [["_dP]])
+Map("v", "<leader>y", '"+y')
+Map({"n", "v"}, "<leader>d", [["_d]])
+Map({"v"}, "<leader>p", [["_dP]])
+
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- vim.keymap.set("n", "n", "nzzzv")

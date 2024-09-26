@@ -34,12 +34,10 @@ Map("v", "K", ":m '<-2<CR>gv=gv")
 Map("v", "<", "<gv")
 Map("v", ">", ">gv")
 
-Map("n", "<TAB>", ":bn<CR>")
-Map("n", "<S-TAB>", ":bp<CR>")
-Map("n", "<leader>bd", ":bd<CR>")
+Map("n", "<leader>nn", "<cmd> :NERDTreeToggle<CR>")
 
 -- lsp
-Map("n", "<leader>gd", ":lua vim.lsp.buf.definition()<CR>")
+Map("n", "<leader>nd", ":lua vim.lsp.buf.definition()<CR>")
 Map("n", "<leader>gi", ":lua vim.lsp.buf.implementation()<CR>")
 Map("n", "<leader>gr", ":lua vim.lsp.buf.references()<CR>")
 Map('n', '<leader>ga', ":lua vim.lsp.buf.code_action()<CR>")
@@ -67,9 +65,6 @@ Map("n", "<F2>", "<cmd>wall<cr>")
 
 -- Toggle [in]visible characters.
 Map("n", "<leader>i", "<cmd>set list!<cr>")
-
--- Obfuscate
-Map("n", "<f3>", "mmggg?G`m")
 
 -- Close all fold except the current one.
 Map("n", "zv", "zMzvzz")
@@ -103,6 +98,7 @@ Map("n", "<C-u>", "<C-u>zz")
 -- Keys disabling
 Map("n", "Q", "<nop>")
 Map("n", "<F1>", "<nop>")
+Map("n", "<F3>", "<nop>")
 
 -- New Tmux session
 Map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

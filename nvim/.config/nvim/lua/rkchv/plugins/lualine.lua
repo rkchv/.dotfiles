@@ -60,7 +60,11 @@ return {
     opts.sections = {
       lualine_a = { "mode" },
       lualine_b = { "branch", "diff", "diagnostics" },
-      lualine_c = { "filename" },
+      lualine_c = { 
+        { 
+          "filename", path = 1 
+        }
+      },
       lualine_x = {
         { show_macro_recording, },
         { "progress", separator = " ", padding = { left = 1, right = 0 } },

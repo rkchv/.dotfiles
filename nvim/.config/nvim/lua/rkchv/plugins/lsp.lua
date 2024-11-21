@@ -1,27 +1,54 @@
 return {
-  {
-    'neovim/nvim-lspconfig',
-    enabled = true,
-    config = function()
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+			"jose-elias-alvarez/null-ls.nvim",
+		},
+		enabled = true,
 
-      local lspconfig = require('lspconfig')
+		config = function()
+			require("mason").setup()
 
-      lspconfig.emmet_language_server.setup({
-        filetypes = { "html", "svelte" },
-      })
+			local mason_lspconfig = require("mason-lspconfig")
 
-      lspconfig.svelte.setup({})
+			mason_lspconfig.setup({
+				ensure_installed = { "gopls", "yamlls", "lua_ls" },
+			})
 
-      lspconfig.tailwindcss.setup({})
-      
-      lspconfig.gopls.setup({
-        settings = {
-          gopls = {
-            analyses = { unusedparams = true },
-            staticcheck = true,
-          },
-        },
-      })
-    end,
-  },
+			local lspconfig = require("lspconfig")
+
+			mason_lspconfig.setup_handlers({
+				function(server_name)
+					local opts = {}
+
+					if server_name == "yamlls" then
+						opts = {
+							settings = {
+								yaml = {
+									format = { enable = true },
+									schemas = {
+										["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+									},
+								},
+							},
+						}
+					end
+
+					lspconfig[server_name].setup(opts)
+				end,
+			})
+
+			-- ======================================
+
+			local null_ls = require("null-ls")
+
+			null_ls.setup({
+				sources = {
+					null_ls.builtins.formatting.stylua,
+				},
+			})
+		end,
+	},
 }

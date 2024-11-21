@@ -1,10 +1,12 @@
 function Map(mode, lhs, rhs, opts)
-    local options = { noremap = true, silent = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.keymap.set(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
 end
+
+Map("i", "EE", "<Esc>")
 
 Map("n", "<C-h>", "<C-w>h")
 Map("n", "<C-j>", "<C-w>j")
@@ -22,7 +24,6 @@ Map("n", "<C-Down>", ":resize +2<CR>")
 Map("n", "<C-Left>", ":vertical resize -2<CR>")
 Map("n", "<C-Right>", ":vertical resize +2<CR>")
 
--- terminal
 Map("t", "<C-Up>", "<cmd>resize -2<CR>")
 Map("t", "<C-Down>", "<cmd>resize +2<CR>")
 Map("t", "<C-Left>", "<cmd>vertical resize -2<CR>")
@@ -34,13 +35,11 @@ Map("v", "K", ":m '<-2<CR>gv=gv")
 Map("v", "<", "<gv")
 Map("v", ">", ">gv")
 
-Map("n", "<leader>nn", "<cmd> :NERDTreeToggle<CR>")
-
 -- lsp
 Map("n", "<leader>nd", ":lua vim.lsp.buf.definition()<CR>")
 Map("n", "<leader>gi", ":lua vim.lsp.buf.implementation()<CR>")
 Map("n", "<leader>gr", ":lua vim.lsp.buf.references()<CR>")
-Map('n', '<leader>ga', ":lua vim.lsp.buf.code_action()<CR>")
+Map("n", "<leader>ga", ":lua vim.lsp.buf.code_action()<CR>")
 Map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 Map("n", "<leader>dd", ":lua vim.lsp.buf.declaration()<CR>")
 Map("n", "<leader>f", ":lua vim.lsp.buf.format()<CR>")
@@ -55,7 +54,7 @@ Map("n", "J", "mzJ`z")
 Map("n", "n", "nzzzv")
 Map("n", "N", "Nzzzv")
 
-Map("n", "LL", ":e #<CR>") 
+Map("n", "LL", ":e #<CR>")
 
 -- Select entire buffer
 Map("n", "vfa", "ggvGg_")
@@ -95,28 +94,31 @@ Map("n", "<leader>ff", vim.cmd.Ex)
 Map("n", "<C-d>", "<C-d>zz")
 Map("n", "<C-u>", "<C-u>zz")
 
--- Keys disabling
-Map("n", "Q", "<nop>")
-Map("n", "<F1>", "<nop>")
-Map("n", "<F3>", "<nop>")
-
 -- New Tmux session
 Map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Find and replace
-vim.keymap.set({"n", "v"}, "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set({ "n", "v" }, "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Make a current file exexutable
 Map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Reload neovim config
 Map("n", "<leader><leader>", function()
-  vim.cmd("so")
+	vim.cmd("so")
 end)
 
 Map("v", "<leader>y", '"+y')
-Map({"n", "v"}, "<leader>d", [["_d]])
-Map({"v"}, "<leader>p", [["_dP]])
+Map({ "n", "v" }, "<leader>d", [["_d]])
+Map({ "v" }, "<leader>p", [["_dP]])
+
+-- ################################### --
+
+-- Keys disabling
+Map("n", "q", "<nop>")
+Map("n", "<F1>", "<nop>")
+Map("n", "<F3>", "<nop>")
+Map("n", "<C-[", "<nop>")
 
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")

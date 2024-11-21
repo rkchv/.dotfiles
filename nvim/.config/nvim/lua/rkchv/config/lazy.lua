@@ -1,5 +1,5 @@
 require("lazy").setup({
-  spec = {
-    { import = "rkchv.plugins" },
-  },
+	spec = {
+		{ import = "rkchv.plugins" },
+	},
 })

@@ -1,10 +1,14 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "jose-elias-alvarez/null-ls.nvim"
+    },
     enabled = true,
 
     config = function()
       local lspconfig = require('lspconfig')
+      local null_ls = require('null-ls')
 
       lspconfig.bashls.setup({
         cmd = { "bash-language-server", "start" },
@@ -87,6 +91,13 @@ return {
             usePlaceholders = true,
             linksInHover = true,
           },
+        },
+      })
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.diagnostics.buf,
+          null_ls.builtins.formatting.buf,
         },
       })
     end,

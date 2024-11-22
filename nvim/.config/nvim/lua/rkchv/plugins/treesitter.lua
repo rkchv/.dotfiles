@@ -21,7 +21,6 @@ return {
 				"markdown",
 				"sql",
 				"toml",
-				"vim",
 				"yaml",
 			},
 

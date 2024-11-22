@@ -12,3 +12,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/lsp/lua-language-server/bin:$PATH"
+export PATH="$HOME/lsp/lua-language-server/bin:$PATH"
+export PATH="$HOME/lsp/bash-language-server/bin:$PATH"
+

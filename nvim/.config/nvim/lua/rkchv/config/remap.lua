@@ -1,17 +1,17 @@
 function Map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.keymap.set(mode, lhs, rhs, options)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
-Map("i", "EE", "<Esc>")
+-- Map("i", "EE", "<Esc>")
 
-Map("n", "<C-h>", "<C-w>h")
-Map("n", "<C-j>", "<C-w>j")
-Map("n", "<C-k>", "<C-w>k")
-Map("n", "<C-l>", "<C-w>l")
+-- Map("n", "<C-h>", "<C-w>h")
+-- Map("n", "<C-j>", "<C-w>j")
+-- Map("n", "<C-k>", "<C-w>k")
+-- Map("n", "<C-l>", "<C-w>l")
 
 -- terminal
 Map("t", "<C-h>", "<cmd>wincmd h<CR>")
@@ -57,7 +57,7 @@ Map("n", "N", "Nzzzv")
 Map("n", "LL", ":e #<CR>")
 
 -- Select entire buffer
-Map("n", "vfa", "ggvGg_")
+-- Map("n", "vfa", "ggvGg_")
 
 -- Save all files.
 Map("n", "<F2>", "<cmd>wall<cr>")
@@ -95,7 +95,7 @@ Map("n", "<C-d>", "<C-d>zz")
 Map("n", "<C-u>", "<C-u>zz")
 
 -- New Tmux session
-Map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- Map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- Find and replace
 vim.keymap.set({ "n", "v" }, "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -105,7 +105,7 @@ Map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Reload neovim config
 Map("n", "<leader><leader>", function()
-	vim.cmd("so")
+  vim.cmd("so")
 end)
 
 Map("v", "<leader>y", '"+y')

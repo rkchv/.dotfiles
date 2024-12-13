@@ -1,5 +1,13 @@
 return {
   {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+  },
+  {
     "folke/tokyonight.nvim",
     enabled = true,
     opts = function(_, opts)
@@ -21,6 +29,7 @@ return {
 
     config = function(_, opts)
       require("tokyonight").setup(opts)
+      vim.cmd.colorscheme "tokyonight"
     end,
   },
   {

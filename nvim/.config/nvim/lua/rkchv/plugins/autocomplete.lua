@@ -17,15 +17,10 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 
-		-- {{{ Confirmation options
-
 		local confirm_opts = {
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = true,
 		}
-		-- --------------------------------------------------------------------- }}}
-
-		-- {{{ Add boarders to completion windows.
 
 		local window = {
 			completion = {
@@ -39,9 +34,6 @@ return {
 				scrollbar = false,
 			},
 		}
-
-		-- --------------------------------------------------------------------- }}}
-		-- {{{ Setup filetype and cmdline preferences.
 
 		cmp.setup.filetype("gitcommit", {
 			sources = cmp.config.sources({
@@ -68,9 +60,6 @@ return {
 			}),
 		})
 
-		-- --------------------------------------------------------------------- }}}
-		-- {{{ Has words before
-
 		local function has_words_before()
 			local line, col = (unpack or table.unpack)(vim.api.nvim_win_get_cursor(0))
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -81,18 +70,11 @@ return {
 			return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 		end
 
-		-- --------------------------------------------------------------------- }}}
-
-		-- {{{ Snippets
-
 		local snippet = {
 			expand = function(args)
 				luasnip.lsp_expand(args.body)
 			end,
 		}
-
-		-- --------------------------------------------------------------------- }}}
-		-- {{{ Mappings
 
 		local mapping = {
 			["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -125,9 +107,6 @@ return {
 			end, { "i", "s" }),
 		}
 
-		-- --------------------------------------------------------------------- }}}
-		-- {{{ Source mapping and formatting
-
 		local source_mapping = {
 			spell = "[Spell]",
 			buffer = "[Buffer]",
@@ -144,9 +123,6 @@ return {
 			end,
 		}
 
-		-- --------------------------------------------------------------------- }}}
-		-- {{{ Sources
-
 		local sources = {
 			{ name = "calc", keyword_length = 3, max_item_count = 10, priority = 250 },
 			{ name = "path", keyword_length = 3, max_item_count = 20, prioirty = 250 },
@@ -155,9 +131,6 @@ return {
 			{ name = "nvim_lsp", keyword_length = 1, max_item_count = 10, priority = 900 },
 		}
 
-		-- --------------------------------------------------------------------- }}}
-		-- {{{ Update the function argument opts with local choices made.
-
 		opts.confirm_opts = confirm_opts
 		opts.formatting = formatting
 		opts.mapping = mapping
@@ -165,7 +138,6 @@ return {
 		opts.sources = sources
 		opts.window = window
 
-		-- --------------------------------------------------------------------- }}}
 	end,
 
 	config = function(_, opts)

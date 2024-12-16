@@ -10,35 +10,7 @@ return {
       local lspconfig = require('lspconfig')
       -- local null_ls = require('null-ls')
 
-      lspconfig.bashls.setup({
-        cmd = { "bash-language-server", "start" },
-        filetypes = { "bash", "sh", "zsh" },
-        settings = {
-          bash = {
-            enable = true,
-            strict = true,
-            highlight = true,
-            completion = {
-              enable = true,
-              triggerAutoComplete = true,
-            },
-            hover = {
-              enable = true,
-            },
-            diagnostics = {
-              enable = true,
-              lint = true,
-            },
-            format = {
-              enable = true,
-              settings = {
-                tabWidth = 2,
-                indentStyle = "space",
-              }
-            }
-          }
-        }
-      })
+      lspconfig.bashls.setup({})
 
       lspconfig.yamlls.setup({
         settings = {
@@ -78,20 +50,36 @@ return {
       })
 
       lspconfig.gopls.setup({
-        settings = {
-          gopls = {
-            analyses = {
-              unusedparams = true,
-              shadow = true,
-              nilness = true,
-            },
-            staticcheck = true,
-            completeUnimported = true,
-            gofumpt = true,
-            usePlaceholders = true,
-            linksInHover = true,
+        -- settings = {
+        --   gopls = {
+        --     analyses = {
+        --       unusedparams = true,
+        --       shadow = true,
+        --       nilness = true,
+        --     },
+        --     staticcheck = true,
+        --     completeUnimported = true,
+        --     gofumpt = true,
+        --     usePlaceholders = true,
+        --     linksInHover = true,
+        --   },
+        -- },
+      })
+
+      lspconfig.ccls.setup({
+        require('lspconfig').ccls.setup({
+          root_dir = require('lspconfig.util').root_pattern('compile_commands.json', '.ccls', '.git')
+        }),
+
+        init_options = {
+          compilationDatabaseDirectory = "build",
+          index = {
+            threads = 0,
           },
-        },
+          clang = {
+            excludeArgs = { "-frounding-math" },
+          },
+        }
       })
 
       -- null_ls.setup({

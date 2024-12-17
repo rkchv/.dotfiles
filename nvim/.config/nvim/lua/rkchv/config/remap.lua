@@ -6,6 +6,21 @@ function Map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
+Map("n", "<leader>gc", ":GoCmt<CR>")
+Map("n", "<leader>at", ":GoAddTag<CR>")
+Map("n", "<leader>rt", ":GoRmTag<CR>")
+Map("n", "<leader>fs", ":GoFillStruct<CR>")
+Map("n", "<leader>fe", ":GoIfErr<CR>")
+Map("n", "<leader>fp", ":GoFixPlurals<CR>")
+
+Map("n", "<leader>q", ":q<CR>")
+-- <leader>CR>
+
+-- Map("n", "<leader>dc", ":GoDoc<CR>")
+-- Map("n", "<leader>lt", ":GoTest<CR>")
+-- Map("n", "<leader>ct", ":GoTermClose<CR>")
+--
+--
 -- Map("i", "EE", "<Esc>")
 
 -- Map("n", "<C-h>", "<C-w>h")
@@ -36,17 +51,17 @@ Map("v", "<", "<gv")
 Map("v", ">", ">gv")
 
 -- lsp
+Map('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 Map("n", "<leader>nd", ":lua vim.lsp.buf.definition()<CR>")
 Map("n", "<leader>gi", ":lua vim.lsp.buf.implementation()<CR>")
 Map("n", "<leader>gr", ":lua vim.lsp.buf.references()<CR>")
 Map("n", "<leader>ga", ":lua vim.lsp.buf.code_action()<CR>")
 Map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 Map("n", "<leader>dd", ":lua vim.lsp.buf.declaration()<CR>")
-Map("n", "<leader>f", ":lua vim.lsp.buf.format()<CR>")
+Map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
 Map("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 
--- dianostic
-Map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
+-- Map("n", "<leader>f", ":lua vim.lsp.buf.format()<CR>")
 
 Map("n", "<C-d>", "<C-d>zz")
 Map("n", "<C-u>", "<C-u>zz")
@@ -73,6 +88,8 @@ Map("n", "zj", "zcjzOzz")
 
 -- Close current fold when open. Always open previous fold.
 Map("n", "zk", "zckzOzz")
+
+Map("n", "wk", "zckzOzz")
 
 -- Quit
 Map("n", "qq", "<cmd>qall!<cr>")

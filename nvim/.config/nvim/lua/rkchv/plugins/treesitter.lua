@@ -1,93 +1,103 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	enabled = true,
-	build = ":TSUpdate",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
+  "nvim-treesitter/nvim-treesitter",
+  enabled = true,
+  build = ":TSUpdate",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
 
-	config = function()
-		require("nvim-treesitter.configs").setup({
+  config = function()
+    require("nvim-treesitter.configs").setup({
 
-			ensure_installed = {
-				"proto",
-				"bash",
-				"c",
-				"dockerfile",
-				"go",
-				"gomod",
-				"json",
-				"lua",
-				"markdown",
-				"sql",
-				"toml",
-				"yaml",
-			},
+      ensure_installed = {
+        "proto",
+        "bash",
+        "c",
+        "dockerfile",
+        "go",
+        "gomod",
+        "json",
+        "lua",
+        "markdown",
+        "sql",
+        "toml",
+        "yaml",
+      },
 
-			auto_install = false,
-			highlight = { enable = true },
-			indent = { enable = true },
+      auto_install = false,
+      highlight = { enable = true },
+      indent = { enable = true },
 
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<c-space>",
-					node_incremental = "<c-space>",
-					node_decremental = "<c-backspace>",
-					scope_incremental = "<c-s>",
-				},
-			},
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",    -- maps in normal mode to init the node/scope selection
+          node_incremental = "grn",  -- increment to the upper named parent
+          scope_incremental = "grc", -- increment to the upper scope (as defined in locals.scm)
+          node_decremental = "grm"   -- decrement to the previous node
+        }
+      },
 
-			textobjects = {
-				select = {
-					enable = true,
-					lookahead = true,
-					keymaps = {
-						["aa"] = "@parameter.outer",
-						["ia"] = "@parameter.inner",
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-						["ii"] = "@conditional.inner",
-						["ai"] = "@conditional.outer",
-						["il"] = "@loop.inner",
-						["al"] = "@loop.outer",
-						["at"] = "@comment.outer",
-					},
-				},
-
-				move = {
-					enable = true,
-					set_jumps = true, -- whether to set jumps in the jumplist
-					goto_next_start = {
-						["]f"] = "@function.outer",
-						["]]"] = "@class.outer",
-					},
-					goto_next_end = {
-						["]F"] = "@function.outer",
-						["]["] = "@class.outer",
-					},
-					goto_previous_start = {
-						["[f"] = "@function.outer",
-						["[["] = "@class.outer",
-					},
-					goto_previous_end = {
-						["[F"] = "@function.outer",
-						["[]"] = "@class.outer",
-					},
-				},
-
-				swap = {
-					enable = true,
-					swap_next = {
-						["<leader>a"] = "@parameter.inner",
-					},
-					swap_previous = {
-						["<leader>A"] = "@parameter.inner",
-					},
-				},
-			},
-		})
-	end,
+      textobjects = {
+        enable = true,
+        lsp_interop = {
+          enable = true,
+          peek_definition_code = {
+            ["DF"] = "@function.outer",
+          }
+        },
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["aC"] = "@class.outer",
+          ["iC"] = "@class.inner",
+          ["ac"] = "@conditional.outer",
+          ["ic"] = "@conditional.inner",
+          ["ae"] = "@block.outer",
+          ["ie"] = "@block.inner",
+          ["al"] = "@loop.outer",
+          ["il"] = "@loop.inner",
+          ["is"] = "@statement.inner",
+          ["as"] = "@statement.outer",
+          ["ad"] = "@comment.outer",
+          ["am"] = "@call.outer",
+          ["im"] = "@call.inner"
+        },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["[["] = "@function.outer",
+          },
+          goto_next_end = {
+            ["]]"] = "@function.outer",
+          },
+          -- goto_previous_start = {
+          --   ["]["] = "@function.outer",
+          -- },
+          -- goto_previous_end = {
+          --   ["[]"] = "@function.outer",
+          -- }
+        },
+        select = {
+          enable = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+          }
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>a"] = "@parameter.inner"
+          },
+          swap_previous = {
+            ["<leader>A"] = "@parameter.inner"
+          }
+        }
+      }
+    })
+  end,
 }

@@ -1,3 +1,10 @@
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "single", -- Options: "none", "single", "double", "rounded", "solid", "shadow"
+  width = 60,        -- Optional: Set the width of the hover window
+  height = 10,       -- Optional: Set the height of the hover window
+})
+
+-- vim.opt.silent = true
 vim.opt.guicursor = "n-v-c:block"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
@@ -28,7 +35,7 @@ vim.opt.incsearch = true
 vim.opt.isfname:append("@-@")
 vim.opt.nrformats = { "alpha", "octal", "hex" }
 vim.opt.shortmess = "aToIOWAF"
-vim.opt.showbreak = "↪"
+-- vim.opt.showbreak = "↪"
 vim.opt.complete = { ".", "w", "b", "u", "t", "i", "kspell" }
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.fillchars = { foldclose = " ", fold = " ", eob = " " }

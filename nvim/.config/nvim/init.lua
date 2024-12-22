@@ -10,8 +10,7 @@ vim.g.loaded_node_provider = 0
 
 require("rkchv.core.lazy")
 require("rkchv.config.lazy")
-
-vim.cmd.colorscheme("tokyonight")
-
 require("rkchv.config.set")
 require("rkchv.config.remap")
+require("rkchv.config.autocmd")
+require("rkchv.config.filetype")

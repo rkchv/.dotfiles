@@ -1,5 +1,13 @@
 return {
   {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      indent = { char = "│" },
+      scope = { enabled = true }
+    }
+  },
+  {
     "quarto-dev/quarto-nvim",
     dependencies = {
       "jmbuhr/otter.nvim",

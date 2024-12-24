@@ -15,6 +15,19 @@ return {
   opts = function(_, opts)
     local actions = require("telescope.actions")
     opts.defaults = {
+      -- preview = {
+      --   treesitter = false,
+      -- },
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--hidden",
+      },
       file_ignore_patterns = {
         ".git/",
         "vendor",
@@ -22,6 +35,9 @@ return {
         "assets",
         "commercial",
         ".DS_Store",
+        "build/",
+        "dist/",
+        ".expo/"
       },
       layout_config = {
         prompt_position = "top",
@@ -39,9 +55,9 @@ return {
       winblend = 0,
     }
     opts.pickers = {
-      colorscheme = { enable_preview = true },
-      find_files = { hidden = true, no_ignore = true },
-      git_files = { hidden = true },
+      -- colorscheme = { enable_preview = true },
+      -- find_files = { hidden = true, no_ignore = true },
+      -- git_files = { hidden = true },
     }
     opts.extensions = {
       file_browser = {
@@ -71,7 +87,7 @@ return {
 
     vim.keymap.set("n", "<leader>fj", builtin.find_files, { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", "<leader>fk", builtin.git_files, {})
-    vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+    vim.keymap.set("n", "<leader>fh", builtin.grep_string, { desc = "[S]earch current [W]ord" })
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
     vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[ ] Find existing buffers" })

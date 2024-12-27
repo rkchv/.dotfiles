@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  enable = true,
+  enabled = true,
 
   opts = function(_, opts)
     local function show_macro_recording()

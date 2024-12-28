@@ -8,7 +8,12 @@ return {
 
     config = function()
       local lspconfig = require('lspconfig')
-      -- local null_ls = require('null-ls')
+
+      lspconfig.emmet_language_server.setup({
+        filetypes = { "typescriptreact", "javascriptreact", "html", "css" },
+      })
+
+      lspconfig.ts_ls.setup({})
 
       lspconfig.zls.setup({})
 

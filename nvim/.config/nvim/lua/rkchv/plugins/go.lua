@@ -9,7 +9,7 @@ return {
     require('go').setup({
       disable_defaults = false,
       go = 'go',
-      goimports = 'goimports',          -- goimports command, can be gopls[default] or either goimports or golines if need to split long lines
+      goimports = 'goimports',        -- goimports command, can be gopls[default] or either goimports or golines if need to split long lines
       gofmt = 'gofumpt',              -- gofmt through gopls: alternative is gofumpt, goimports, golines, gofmt, etc
       fillstruct = 'gopls',           -- set to fillstruct if gopls fails to fill struct
       -- max_line_len = 150,              -- max line length in golines format, Target maximum line length for golines

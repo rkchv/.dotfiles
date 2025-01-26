@@ -16,6 +16,7 @@ export PATH="$GOBIN:$PATH"
 export PATH="$HOME/lsp/lua-language-server/bin:$PATH"
 export PATH="$HOME/lsp/bash-language-server/bin:$PATH"
 export PATH="$HOME/lsp/yaml-language-server/bin:$PATH"
+export PATH="$HOME/lsp/zls/zig-out/bin:$PATH"
 
 export GOPRIVATE=gitlab.com
 export GONOSUMDB=gitlab.com

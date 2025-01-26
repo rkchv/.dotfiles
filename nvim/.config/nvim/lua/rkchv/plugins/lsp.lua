@@ -10,6 +10,8 @@ return {
       local lspconfig = require('lspconfig')
       -- local null_ls = require('null-ls')
 
+      lspconfig.zls.setup({})
+
       lspconfig.bashls.setup({})
 
       lspconfig.yamlls.setup({

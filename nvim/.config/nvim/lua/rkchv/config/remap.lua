@@ -59,9 +59,8 @@ Map("n", "<leader>ga", ":lua vim.lsp.buf.code_action()<CR>")
 Map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
 Map("n", "<leader>dd", ":lua vim.lsp.buf.declaration()<CR>")
 Map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
+Map("n", "<leader>f", ":lua vim.lsp.buf.format()<CR>")
 Map("n", "K", ":lua vim.lsp.buf.hover()<CR>")
-
--- Map("n", "<leader>f", ":lua vim.lsp.buf.format()<CR>")
 
 Map("n", "<C-d>", "<C-d>zz")
 Map("n", "<C-u>", "<C-u>zz")

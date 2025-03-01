@@ -5,6 +5,15 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+bindkey -v
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias df="cd ~/.dotfiles"
+alias pj="cd ~/Desktop/now_dev"
+
 export GOBIN=$HOME/go/bin
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin

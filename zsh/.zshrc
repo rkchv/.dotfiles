@@ -18,8 +18,12 @@ export PATH="$HOME/lsp/bash-language-server/bin:$PATH"
 export PATH="$HOME/lsp/yaml-language-server/bin:$PATH"
 export PATH="$HOME/lsp/zls/zig-out/bin:$PATH"
 
-export GOPRIVATE=gitlab.com
-export GONOSUMDB=gitlab.com
+export GEM_HOME=~/.gems
+export PATH=$GEM_HOME/bin:$PATH
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -6,22 +6,30 @@ function Map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
-Map("n", "<leader>gc", ":GoCmt<CR>")
-Map("n", "<leader>at", ":GoAddTag<CR>")
-Map("n", "<leader>rt", ":GoRmTag<CR>")
-Map("n", "<leader>fs", ":GoFillStruct<CR>")
-Map("n", "<leader>fe", ":GoIfErr<CR>")
-Map("n", "<leader>fp", ":GoFixPlurals<CR>")
+-- Map("i", "jj", "<Esc>")
 
-Map("n", "<leader>q", ":q<CR>")
--- <leader>CR>
+Map({ "n", "v" }, "<leader>d", [["_d]])
+Map({ "v" }, "<leader>p", [["_dP]])
+
+Map("n", "gl", "g_")      -- Move to the last non-blank character of the line
+Map("n", "gh", "^")       -- Move to the first non-blank character of the line
+Map("n", "gj", "/^#<CR>") -- Jump to the next Markdown header
+Map("n", "gk", "?^#<CR>") -- Jump to the previous Markdown header
+Map("n", "Y", "y$")       -- Yank from cursor to end of the line
+
+-- Map({ "n", "v" }, "y", "myy`y")
+
+-- Map("n", "<leader>gc", ":GoCmt<CR>")
+-- Map("n", "<leader>at", ":GoAddTag<CR>")
+-- Map("n", "<leader>rt", ":GoRmTag<CR>")
+-- Map("n", "<leader>fs", ":GoFillStruct<CR>")
+-- Map("n", "<leader>fe", ":GoIfErr<CR>")
+-- Map("n", "<leader>fp", ":GoFixPlurals<CR>")
 
 -- Map("n", "<leader>dc", ":GoDoc<CR>")
 -- Map("n", "<leader>lt", ":GoTest<CR>")
 -- Map("n", "<leader>ct", ":GoTermClose<CR>")
 --
---
--- Map("i", "EE", "<Esc>")
 
 -- Map("n", "<C-h>", "<C-w>h")
 -- Map("n", "<C-j>", "<C-w>j")
@@ -124,14 +132,13 @@ Map("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
 
-Map("v", "<leader>y", '"+y')
-Map({ "n", "v" }, "<leader>d", [["_d]])
-Map({ "v" }, "<leader>p", [["_dP]])
 
 -- ################################### --
 
 -- Keys disabling
 Map("n", "q", "<nop>")
+-- Map("n", "ZZ", "<nop>")
+Map("n", "ZQ", "<nop>")
 Map("n", "<F1>", "<nop>")
 Map("n", "<F3>", "<nop>")
 Map("n", "<C-[", "<nop>")

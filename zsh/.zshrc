@@ -4,8 +4,6 @@ ZSH_THEME="robbyrussell"
 plugins=(git)
 plugins=(fzf)
 
-source $ZSH/oh-my-zsh.sh
-
 bindkey -v
 
 alias ..="cd .."
@@ -15,26 +13,31 @@ alias ....="cd ../../.."
 alias df="cd ~/.dotfiles"
 alias pj="cd ~/Desktop/now_dev"
 
-export GOBIN=$HOME/go/bin
-
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/zig:$PATH"
-export PATH="$HOME/Library/Python/3.9/bin:$PATH"
-export PATH="$GOBIN:$PATH"
-export PATH="$HOME/lsp/lua-language-server/bin:$PATH"
-export PATH="$HOME/lsp/bash-language-server/bin:$PATH"
-export PATH="$HOME/lsp/yaml-language-server/bin:$PATH"
-export PATH="$HOME/lsp/zls/zig-out/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.asdf:$PATH"
+export PATH="$HOME/.asdf/installs/rust/$(asdf current rust | tail -n 1 | awk '{print $2}')/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
-export GEM_HOME=~/.gems
-export PATH=$GEM_HOME/bin:$PATH
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/ruby/lib"
-export CPPFLAGS="-I/usr/local/opt/ruby/include"
-export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+export UNSAFE_PYO3_BUILD_FREE_THREADED=1
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source $ZSH/oh-my-zsh.sh
+source $(brew --prefix asdf)/libexec/asdf.sh
+
+
+# pnpm
+export PNPM_HOME="/Users/roman/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# The next line updates PATH for CLI.
+if [ -f '/Users/roman/yandex-cloud/path.bash.inc' ]; then source '/Users/roman/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/Users/roman/yandex-cloud/completion.zsh.inc' ]; then source '/Users/roman/yandex-cloud/completion.zsh.inc'; fi
+

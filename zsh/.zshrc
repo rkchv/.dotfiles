@@ -6,6 +6,9 @@ plugins=(fzf)
 
 bindkey -v
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+source $(brew --prefix asdf)/libexec/asdf.sh
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -17,14 +20,10 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.asdf:$PATH"
-export PATH="$HOME/.asdf/installs/rust/$(asdf current rust | tail -n 1 | awk '{print $2}')/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
-export UNSAFE_PYO3_BUILD_FREE_THREADED=1
-
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix asdf)/libexec/asdf.sh
 
 
 # pnpm

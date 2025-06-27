@@ -23,7 +23,7 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(/usr/local/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if command -v brew &>/dev/null && [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
   source "$(brew --prefix asdf)/libexec/asdf.sh"

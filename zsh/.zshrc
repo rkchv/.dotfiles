@@ -34,6 +34,16 @@ if command -v brew &>/dev/null && [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]
   source "$(brew --prefix asdf)/libexec/asdf.sh"
 fi
 
+# direnv — load/unload per-directory environment from .envrc
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# zoxide — smarter cd (adds the `z` command)
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
 # The next line updates PATH for CLI.
 if [ -f '/Users/roman/yandex-cloud/path.bash.inc' ]; then source '/Users/roman/yandex-cloud/path.bash.inc'; fi
 

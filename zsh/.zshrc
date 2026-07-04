@@ -14,6 +14,9 @@ alias nb="cd ~/Desktop/notebook"
 alias dd="cd ~/Desktop"
 alias pj="cd ~/Projects"
 
+# Use OpenTofu as a drop-in replacement for the terraform command
+alias terraform="tofu"
+
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"

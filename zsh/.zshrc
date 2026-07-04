@@ -20,6 +20,8 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.asdf:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+# Rust toolchain proxies from Homebrew's keg-only rustup (cargo, rustc, rust-analyzer)
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 

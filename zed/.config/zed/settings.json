@@ -13,8 +13,6 @@
 			"type": "registry"
 		}
 	},
-	"buffer_font_family": "JetBrains Mono",
-	"ui_font_family": "JetBrains Mono",
 	"base_keymap": "VSCode",
 	"telemetry": {
 		"diagnostics": false,

@@ -63,6 +63,18 @@
 		}
 	},
 	{
+		"context": "Terminal",
+		"bindings": {
+			"cmd-alt-t": "agent::ToggleFocus"
+		}
+	},
+	{
+		"context": "AgentPanel",
+		"bindings": {
+			"cmd-alt-t": "terminal_panel::ToggleFocus"
+		}
+	},
+	{
 		"context": "menu",
 		"use_key_equivalents": true,
 		"bindings": {

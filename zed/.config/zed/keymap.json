@@ -1,0 +1,89 @@
+[
+	{
+		"context": "Editor && vim_mode == visual",
+		"bindings": {
+			"shift-k": "editor::MoveLineUp",
+			"shift-j": "editor::MoveLineDown",
+			">": "editor::Indent",
+			"<": "editor::Outdent"
+		}
+	},
+	{
+		"context": "Editor && vim_mode == normal",
+		"bindings": {
+			"+ +": "editor::JoinLines",
+			"space z": "workspace::ToggleCenteredLayout",
+			"shift-k": "editor::MoveLineUp",
+			"shift-j": "editor::MoveLineDown",
+			">": "editor::Indent",
+			"<": "editor::Outdent",
+			"cmd a": null,
+			"f2": "workspace::Save",
+			"= =": "editor::SelectAll",
+			"space f j": "file_finder::Toggle",
+			"space f f": "workspace::NewSearch",
+			"space g d": "editor::GoToDefinition",
+			"space g D": "editor::GoToDeclaration",
+			"space g i": "editor::GoToImplementation",
+			"space g t": "editor::GoToTypeDefinition",
+			"space g r": "editor::FindAllReferences",
+			"space r r": "editor::Rename",
+			"H": "editor::Hover",
+			"L L": "pane::AlternateFile",
+			"g l": "vim::EndOfLine",
+			"g h": "vim::FirstNonWhitespace",
+			"space p": "pane::TogglePinTab",
+			"space 1": [
+				"pane::ActivateItem",
+				0
+			],
+			"space 2": [
+				"pane::ActivateItem",
+				1
+			],
+			"space 3": [
+				"pane::ActivateItem",
+				2
+			],
+			"space 4": [
+				"pane::ActivateItem",
+				3
+			],
+			"space e": "project_panel::ToggleFocus",
+			"space t": "terminal_panel::ToggleFocus",
+			"space a": "agent::ToggleFocus",
+			"space g g": "git_panel::ToggleFocus",
+			"space o": "outline_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "ProjectPanel",
+		"bindings": {
+			"space e": "project_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "menu",
+		"use_key_equivalents": true,
+		"bindings": {
+			"ctrl-j": "menu::SelectNext",
+			"ctrl-k": "menu::SelectPrevious"
+		}
+	},
+	{
+		"context": "(Picker > Editor) || (FileFinder > Picker > Editor)",
+		"use_key_equivalents": true,
+		"bindings": {
+			"ctrl-j": "menu::SelectNext",
+			"ctrl-k": "menu::SelectPrevious"
+		}
+	},
+	{
+		"context": "Editor && (showing_code_actions || showing_completions)",
+		"use_key_equivalents": true,
+		"bindings": {
+			"ctrl-j": "editor::ContextMenuNext",
+			"ctrl-k": "editor::ContextMenuPrevious"
+		}
+	}
+]

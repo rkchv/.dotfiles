@@ -20,7 +20,7 @@ alias terraform="tofu"
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.asdf:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 # Rust toolchain proxies from Homebrew's keg-only rustup (cargo, rustc, rust-analyzer)
@@ -30,9 +30,7 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if command -v brew &>/dev/null && [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
-  source "$(brew --prefix asdf)/libexec/asdf.sh"
-fi
+# asdf 0.16+ (Go rewrite) needs only its shims dir on PATH (set above); no asdf.sh to source.
 
 # direnv — load/unload per-directory environment from .envrc
 if command -v direnv &>/dev/null; then
